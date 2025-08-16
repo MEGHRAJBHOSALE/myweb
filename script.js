@@ -61,3 +61,26 @@ sr.reveal('.home__social-icon', {
 sr.reveal('.contact__input', {
     interval: 200
 });
+
+
+/*==================== EMAIL JS CONTACT FORM ====================*/
+function sendEmail() {
+    Email.send({
+        // Note: This is a public token. For it to work, you must authorize your domain on smtpjs.com
+        SecureToken: "e68f66ee-3203-442e-a0eb-16b08f85550e",
+        To: 'meghrajbhosale28@gmail.com',
+        From: "adityagurav54@gmail.com",
+        Subject: "Hey Meghraj, New Contact Form Enquiry from Portfolio",
+        Body: "<b>Name:</b> " + document.getElementById("name").value +
+            "<br><b>Email:</b> " + document.getElementById("maill").value +
+            "<br><b>Message:</b><br>" + document.getElementById("message").value,
+    })
+    .then(function (message) {
+        if (message === 'OK') {
+            alert("Your message has been sent successfully!");
+            document.querySelector('.contact__form').reset(); // Reset form after sending
+        } else {
+            alert("Failed to send message. Please try again later.");
+        }
+    });
+}
